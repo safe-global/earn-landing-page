@@ -1,0 +1,38 @@
+name: Tag & GitHub release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  tag-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Extract version
+        id: version
+        run: |
+          NEW_VERSION=$(node -p 'require("./package.json").version')
+          echo "version=v$NEW_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Create a git tag
+        run: git tag $NEW_VERSION && git push --tags
+        env:
+          NEW_VERSION: ${{ steps.version.outputs.version }}
+
+      - name: GitHub release
+        if: success()
+        uses: actions/create-release@v1
+        id: create_release
+        with:
+          draft: true
+          prerelease: false
+          release_name: ${{ steps.version.outputs.version }}
+          tag_name: ${{ steps.version.outputs.version }}
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
