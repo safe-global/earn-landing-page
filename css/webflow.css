@@ -1077,7 +1077,6 @@ textarea.w-select {
   text-align: left;
   margin-left: auto;
   margin-right: auto;
-  white-space: nowrap;
 }
 .w-dropdown-toggle {
   user-select: none;
