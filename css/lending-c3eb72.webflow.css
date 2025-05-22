@@ -1877,7 +1877,6 @@
     flex: 0 auto;
     display: block;
     position: static;
-    overflow: scroll;
   }
 
   .flex-block-4 {
@@ -1895,13 +1894,14 @@
   }
 
   .h1-mobile {
-    font-size: 44px;
-    line-height: 46px;
+    font-size: 32px;
+    line-height: 36px;
   }
 
   .body-default-mobile {
     font-size: 18px;
     line-height: 24px;
+    padding: 0 24px;
   }
 
   .container-3-mobile {
