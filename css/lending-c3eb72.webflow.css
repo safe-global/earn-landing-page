@@ -2037,8 +2037,8 @@
     padding-left: 16px;
     padding-right: 16px;
     display: none;
-    position: absolute;
-    inset: 0%;
+    position: fixed;
+    inset: 0;
   }
 
   .nav-link {
